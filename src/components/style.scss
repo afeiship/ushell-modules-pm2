@@ -1,0 +1,30 @@
+.react-sticky{
+  color:#000;
+
+
+  >*{
+    background: #8e8e93;
+    height:100px;
+    top:0;
+    width:100%;
+  }
+}
+
+.react-sticky[data-support-sticky=true]{
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: -o-sticky;
+  position: sticky;
+  top:0;
+}
+
+.react-sticky[data-support-sticky=false]{
+  >*{
+    width:100%;
+  }
+}
+
+.react-shadow-child{
+  opacity: 0;
+}
