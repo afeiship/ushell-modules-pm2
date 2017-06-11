@@ -1,12 +1,26 @@
 .react-sticky{
-  color:#000;
-
-
+  width:100%;
   >*{
     background: #8e8e93;
     height:100px;
     top:0;
     width:100%;
+  }
+
+  &.is-sticky{
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    position: sticky;
+  }
+
+  &.is-fixed{
+    position: fixed;
+  }
+
+  &.is-relative{
+    position: relative;
   }
 }
 

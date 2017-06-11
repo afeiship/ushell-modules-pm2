@@ -82,6 +82,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "css-detect": "github:afeiship/css-detect",
     "next-dom-event": "github:afeiship/next-dom-event",
     "noop": "github:afeiship/noop",
     "object-assign": "^4.1.1",

@@ -5,32 +5,17 @@ import React,{PureComponent, cloneElement} from 'react';
 import NxDomEvent from 'next-dom-event';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import cssDetect from 'css-detect';
 import noop from 'noop';
 import objectAssign from 'object-assign';
-
-function featureTest(property, value, noPrefixes) {
-  // Thanks Modernizr!
-  //css-positionsticky.js
-  // https://github.com/phistuck/Modernizr/commit/3fb7217f5f8274e2f11fe6cfeda7cfaf9
-  // 948a1f5
-  var prop = property + ':',
-    el = document.createElement('test'),
-    mStyle = el.style;
-  if (!noPrefixes) {
-    mStyle.cssText = prop + ['-webkit-', '-moz-', '-ms-', '-o-', ''].join(value + ';' + prop) + value + ';';
-  } else {
-    mStyle.cssText = prop + value;
-  }
-  return mStyle[property].indexOf(value) !== -1;
-}
 
 export default class extends PureComponent{
   /*===properties start===*/
   static propTypes = {
     className:PropTypes.string,
     scroller: PropTypes.object,
-    top:PropTypes.number,
-    bottom:PropTypes.number,
+    top:PropTypes.string,
+    bottom:PropTypes.string,
   };
 
   static defaultProps = {
@@ -50,7 +35,7 @@ export default class extends PureComponent{
   }
 
   get supportSticky(){
-    return featureTest('position', 'sticky');
+    return !cssDetect('position', 'sticky');
   }
 
   get scrollTop(){
@@ -59,11 +44,18 @@ export default class extends PureComponent{
 
   get child(){
     const {hidden} = this.state;
-    return cloneElement(this.props.children,{
+    const {children} = this.props;
+    const {style,top,bottom,...childProps} = children.props;
+    const positionStyle = !hidden ? 'fixed' : 'relative';
+    return cloneElement(children,{
+      ...childProps,
       style:{
-        position:!hidden ? 'fixed' : 'relative'
+        position:positionStyle,
+        top,
+        bottom
       }
     });
+
   }
 
   get clonedChild(){
@@ -104,12 +96,11 @@ export default class extends PureComponent{
   };
 
   render(){
-    const {className,children,scroller,...props} = this.props;
+    const {className,children,scroller,top,bottom,...props} = this.props;
     const supportSticky = this.supportSticky;
     return (
       <section ref='root' {...props} data-support-sticky={supportSticky} className={classNames('react-sticky',className)}>
-      {supportSticky && children}
-      {!supportSticky && this.child}
+      {this.child}
       {!supportSticky && this.clonedChild}
       </section>
     );
