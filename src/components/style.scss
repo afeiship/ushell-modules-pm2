@@ -1,44 +1,24 @@
 .react-sticky{
-  width:100%;
-  >*{
-    background: #8e8e93;
-    height:100px;
-    top:0;
-    width:100%;
-  }
 
-  &.is-sticky{
-    position: -webkit-sticky;
-    position: -moz-sticky;
-    position: -ms-sticky;
-    position: -o-sticky;
+  &[data-support-sticky=true]{
     position: sticky;
   }
 
-  &.is-fixed{
-    position: fixed;
+  &[data-support-sticky=false]{
+    :first-child{
+      margin-top: 0;
+      margin-bottom: 0;
+      position: fixed;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+      width:100%;
+      transition: position 0.3s;
+    }
+
+    [data-role=shadow-element]{
+      opacity: 0;
+      width:100%;
+      position: relative;
+    }
   }
-
-  &.is-relative{
-    position: relative;
-  }
-}
-
-.react-sticky[data-support-sticky=true]{
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -ms-sticky;
-  position: -o-sticky;
-  position: sticky;
-  top:0;
-}
-
-.react-sticky[data-support-sticky=false]{
-  >*{
-    width:100%;
-  }
-}
-
-.react-shadow-child{
-  opacity: 0;
 }

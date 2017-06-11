@@ -35,6 +35,15 @@ html,body,#app,.hello-react-sticky{
   }
 }
 
+.react-sticky{
+    >*{
+    background: #8e8e93;
+    height:100px;
+    width:100%;
+    opacity: 0.8;
+  }
+}
+
 .items .item{
     height:200px;
 }

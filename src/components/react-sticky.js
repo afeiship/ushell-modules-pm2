@@ -12,10 +12,10 @@ import objectAssign from 'object-assign';
 export default class extends PureComponent{
   /*===properties start===*/
   static propTypes = {
-    className:PropTypes.string,
+    className: PropTypes.string,
     scroller: PropTypes.object,
-    top:PropTypes.string,
-    bottom:PropTypes.string,
+    top: PropTypes.string,
+    bottom: PropTypes.string,
   };
 
   static defaultProps = {
@@ -35,36 +35,36 @@ export default class extends PureComponent{
   }
 
   get supportSticky(){
-    return !cssDetect('position', 'sticky');
+    return cssDetect('position', 'sticky');
   }
 
   get scrollTop(){
-    return document.documentElement.scrollTop || document.body.scrollTop || 0;
+    if(this.isWindow){
+      return document.documentElement.scrollTop || document.body.scrollTop || 0;
+    }
+    return this.scroller.scrollTop;
   }
 
   get child(){
-    const {hidden} = this.state;
-    const {children} = this.props;
-    const {style,top,bottom,...childProps} = children.props;
-    const positionStyle = !hidden ? 'fixed' : 'relative';
-    return cloneElement(children,{
-      ...childProps,
-      style:{
-        position:positionStyle,
-        top,
-        bottom
-      }
-    });
+    const { hidden } = this.state;
+    const { children,top,bottom } = this.props;
+    const { style,...childProps } = children.props;
+    const position = !hidden ? 'fixed' : 'static';
 
+    return this.supportSticky ?  children :cloneElement(children,{
+      ...childProps,
+      style:{ position, top, bottom,...style }
+    });
   }
 
-  get clonedChild(){
-    const {children} = this.props;
-    const {className,...props} = children.props;
-    return cloneElement(children, objectAssign(props,{
+  get shadowChild(){
+    const {children,top,bottom} = this.props;
+    return cloneElement(children, {
+      ...children.props,
+      style:objectAssign({...children.props.style},{top,bottom}),
       hidden:this.state.hidden,
-      className:classNames(children.props.className,'react-shadow-child')
-    }));
+      'data-role':'shadow-element'
+    });
   }
 
   get bound(){
@@ -73,35 +73,40 @@ export default class extends PureComponent{
 
   componentWillMount(){
     if(!this.supportSticky){
-      history.scrollRestoration='manual';
+      // history.scrollRestoration='manual';
       this.attachEvents();
     }
   }
 
   componentDidMount(){
     this._root = this.refs.root;
-    this._boundTop = this.bound.top;
+    this._boundTop = this.bound.top + this.scrollTop;
+  }
+
+  componentWillUnmount(){
+    this._root = null;
+    this._boundTop = null;
+    this._scrollRes && this._scrollRes.destroy();
   }
 
   attachEvents(){
-    if(this.isWindow){
-      this._scrollRes = NxDomEvent.on(window,'scroll',this._onScroll);
-    }
+    this._scrollRes = NxDomEvent.on(this.scroller,'scroll',this._onScroll);
   }
 
-  _onScroll = (inEvent) => {
+  _onScroll =  (inEvent)=> {
     this.setState({
-      hidden:this.scrollTop <= this._boundTop
+      hidden:this.scrollTop <= this._boundTop - parseInt(this.props.top)
     });
   };
 
   render(){
-    const {className,children,scroller,top,bottom,...props} = this.props;
+    const {className,children,scroller,top,bottom,style,...props} = this.props;
     const supportSticky = this.supportSticky;
+    const currentStyle = supportSticky ? objectAssign({ top, bottom },props) : style;
     return (
-      <section ref='root' {...props} data-support-sticky={supportSticky} className={classNames('react-sticky',className)}>
+      <section ref='root' {...props} style={currentStyle} data-support-sticky={supportSticky} className={classNames('react-sticky',className)}>
       {this.child}
-      {!supportSticky && this.clonedChild}
+      {!supportSticky && this.shadowChild}
       </section>
     );
   }
