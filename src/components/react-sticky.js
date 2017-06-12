@@ -39,10 +39,11 @@ export default class extends PureComponent{
   }
 
   get scrollTop(){
+    const {scroller} = this.props;
     if(this.isWindow){
       return document.documentElement.scrollTop || document.body.scrollTop || 0;
     }
-    return this.scroller.scrollTop;
+    return scroller.scrollTop;
   }
 
   get child(){
@@ -90,7 +91,8 @@ export default class extends PureComponent{
   }
 
   attachEvents(){
-    this._scrollRes = NxDomEvent.on(this.scroller,'scroll',this._onScroll);
+    const {scroller} = this.props;
+    this._scrollRes = NxDomEvent.on(scroller,'scroll',this._onScroll);
   }
 
   _onScroll =  (inEvent)=> {
