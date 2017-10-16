@@ -19,7 +19,8 @@ export default class extends PureComponent{
   };
 
   static defaultProps = {
-    scroller:window
+    scroller: window,
+    top:'0'
   };
   /*===properties end===*/
 
