@@ -70,7 +70,8 @@ export default class extends PureComponent{
   }
 
   get bound(){
-    return this._root.getBoundingClientRect();
+    const { root } = this.refs;
+    return root.getBoundingClientRect();
   }
 
   componentWillMount(){
@@ -80,14 +81,7 @@ export default class extends PureComponent{
     }
   }
 
-  componentDidMount(){
-    this._root = this.refs.root;
-    this._boundTop = this.bound.top + this.scrollTop;
-  }
-
   componentWillUnmount(){
-    this._root = null;
-    this._boundTop = null;
     this._scrollRes && this._scrollRes.destroy();
   }
 
