@@ -20,7 +20,7 @@ export default class extends PureComponent{
 
   static defaultProps = {
     scroller: window,
-    top:'0'
+    top:'0px'
   };
   /*===properties end===*/
 
@@ -55,7 +55,7 @@ export default class extends PureComponent{
 
     return this.supportSticky ?  children :cloneElement(children,{
       ...childProps,
-      style:{ position, top, bottom,...style }
+      style: objectAssign({ position, top, bottom }, style)
     });
   }
 
@@ -97,8 +97,9 @@ export default class extends PureComponent{
   }
 
   _onScroll =  (inEvent)=> {
+    const boundTop = this.bound.top + this.scrollTop;
     this.setState({
-      hidden:this.scrollTop <= this._boundTop - parseInt(this.props.top)
+      hidden:this.scrollTop <= boundTop - parseFloat(this.props.top)
     });
   };
 

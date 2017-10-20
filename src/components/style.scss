@@ -5,7 +5,7 @@
   }
 
   &[data-support-sticky=false]{
-    :first-child{
+    >:first-child{
       margin-top: 0;
       margin-bottom: 0;
       position: fixed;
@@ -15,7 +15,7 @@
       transition: position 0.3s;
     }
 
-    [data-role=shadow-element]{
+    >[data-role=shadow-element]{
       opacity: 0;
       width:100%;
       position: relative;
