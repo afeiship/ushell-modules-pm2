@@ -20,7 +20,7 @@ export default class extends PureComponent{
 
   static defaultProps = {
     scroller: window,
-    top:'0px'
+    top: '0'
   };
   /*===properties end===*/
 
@@ -76,7 +76,6 @@ export default class extends PureComponent{
 
   componentWillMount(){
     if(!this.supportSticky){
-      // history.scrollRestoration='manual';
       this.attachEvents();
     }
   }
