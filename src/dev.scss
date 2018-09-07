@@ -3,6 +3,11 @@ ul,li{list-style: none;}
 html,body,#app,.hello-react-sticky{
   height:100%;
 }
+
+
+@import './components/style.scss';
+
+
 .hello-react-sticky{
   color:#F00;
   // padding:50px 20px;
