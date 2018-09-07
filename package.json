@@ -83,6 +83,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "copy-webpack-plugin": "^4.5.2",
     "css-detect": "github:afeiship/css-detect",
     "next-dom-event": "github:afeiship/next-dom-event",
     "noop": "github:afeiship/noop",

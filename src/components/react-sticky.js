@@ -1,6 +1,6 @@
 import './style.scss';
 
-import React,{PureComponent, cloneElement} from 'react';
+import React,{ Component, cloneElement } from 'react';
 
 import NxDomEvent from 'next-dom-event';
 import PropTypes from 'prop-types';
@@ -9,7 +9,7 @@ import cssDetect from 'css-detect';
 import noop from 'noop';
 import objectAssign from 'object-assign';
 
-export default class extends PureComponent{
+export default class extends Component{
   /*===properties start===*/
   static propTypes = {
     className: PropTypes.string,
