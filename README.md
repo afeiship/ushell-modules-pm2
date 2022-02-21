@@ -1,99 +1,23 @@
-# react-sticky
-> A high performant module making native position:sticky statefull and polyfilling the missing sticky for react.
+# ushell-modules-pm2
+> Ushell module for pm2.
 
+[![version][version-image]][version-url]
+[![license][license-image]][license-url]
+[![download][download-image]][download-url]
 
-## properties:
-```javascript
-
-  static propTypes = {
-    className: PropTypes.string,
-    scroller: PropTypes.object,
-    top: PropTypes.string,
-    bottom: PropTypes.string,
-  };
-
-  static defaultProps = {
-    scroller: window,
-    top: '0'
-  };
-  
+## installation
+```shell
+npm i -S @jswork/ushell-modules-pm2
 ```
 
-## usage:
-```jsx
+## license
+Code released under [the MIT license](https://github.com/afeiship/ushell-modules-pm2/blob/master/LICENSE.txt).
 
-// install: npm install afeiship/react-sticky --save
-// import : import ReactSticky from 'react-sticky'
-class AComp extends React.Component{
-  render(){
-    return (
-      <div className="a-comp">
-        SOMELJLJLKJDLFJDF
-      </div>
-    );
-  }
-};
-class App extends React.Component{
-  state = {
-    timer: 3
-  };
+[version-image]: https://img.shields.io/npm/v/@jswork/ushell-modules-pm2
+[version-url]: https://npmjs.org/package/@jswork/ushell-modules-pm2
 
-  constructor(props){
-    super(props);
-    window.demo = this;
-    window.refs = this.refs;
-    window.rc = this.refs.rc;
-  }
+[license-image]: https://img.shields.io/npm/l/@jswork/ushell-modules-pm2
+[license-url]: https://github.com/afeiship/ushell-modules-pm2/blob/master/LICENSE.txt
 
-  componentWillMount(){
-    const timer = setTimeout(()=>{
-      this.setState({
-        timer:null
-      });
-    },2000);
-  }
-
-  render(){
-    return (
-      <div className="hello-react-sticky">
-        <p>Some tex..</p>
-
-        <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
-        <ReactSticky top='40px'>
-          <AComp />
-        </ReactSticky>
-        <ReactSticky top="40px">
-          <div className="sticky-test">I am sticky 40px.</div>
-        </ReactSticky>
-        <div><p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
-        <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
-
-
-        <ReactSticky top="80px">
-          <div className="sticky-test">I am sticky 80px.</div>
-        </ReactSticky>
-        <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p></div>
-
-          {
-            !this.state.timer && <div className="items">
-                <div className="item">item1</div>
-                <div className="item">item2</div>
-                <div className="item">item3</div>
-                <div className="item">item4</div>
-                <div className="item">item5</div>
-            </div>
-          }
-    </div>
-    );
-  }
-}
-
-```
-
-
-
-## resource:
-+ http://www.cnblogs.com/Kummy/p/4966937.html
-+ https://github.com/steven5538/vue-button
-+ https://yarnpkg.com/en/docs/install
-
+[download-image]: https://img.shields.io/npm/dm/@jswork/ushell-modules-pm2
+[download-url]: https://www.npmjs.com/package/@jswork/ushell-modules-pm2
