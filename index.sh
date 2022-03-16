@@ -13,5 +13,6 @@ alias pm2-logs-tail='pm2 logs --tail';
 alias pm2-start-all='pm2 start all';
 alias pm2-stop-all='pm2 stop all';
 alias pm2-del-all='pm2 delete all';
+alias pm2-reset="pm2 reset all";
 
 unset ROOT_PATH;

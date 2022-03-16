@@ -1,6 +1,6 @@
 {
   "name": "@jswork/ushell-modules-pm2",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Ushell module for pm2.",
   "main": "index.sh",
   "repository": {
