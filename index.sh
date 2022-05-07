@@ -7,7 +7,8 @@ ROOT_PATH=$(dirname $BASH_SOURCE);
 # p: stop
 # r: restart
 # d: delete
-# rt: delete
+# rt: reset
+
 alias pm2l='pm2 list';
 alias pm2s='pm2 start';
 alias pm2p='pm2 stop';
