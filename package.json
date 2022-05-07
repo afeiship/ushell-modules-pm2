@@ -1,6 +1,6 @@
 {
   "name": "@jswork/ushell-modules-pm2",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Ushell module for pm2.",
   "main": "index.sh",
   "repository": {
@@ -9,9 +9,8 @@
   },
   "keywords": [
     "ushell",
-    "unix",
-    "shell",
-    "ushell-modules-pm2"
+    "module",
+    "pm2"
   ],
   "license": "MIT",
   "bugs": {
@@ -22,7 +21,7 @@
     "release": "release-it"
   },
   "devDependencies": {
-    "release-it": "^14.2.1"
+    "release-it": "^14.14.3"
   },
   "publishConfig": {
     "access": "public",
